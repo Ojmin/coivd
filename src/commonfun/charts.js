@@ -6,11 +6,14 @@ import {setOption1,setOption2,setOption3,setOption4,setOption5,setOption6,setFor
 export function getForeinData (){
 	return new Promise((resolve,reject)=>{
 		jsonp({
-			url: 'https://view.inews.qq.com/g2/getOnsInfo',
-			params: {
-				name: 'disease_foreign',
-			},
+			// url: 'https://view.inews.qq.com/g2/getOnsInfo',
+			// params: {
+			// 	name: 'disease_foreign',
+			// },
+			url: 'http://127.0.0.1:8000/coivd_info',
+			
 			success(res) {
+				console.log(res)
 				let foreinData;
 				let chinaData;
 				foreinData = JSON.parse(res.data);
@@ -32,10 +35,11 @@ export function getMapData(){
 	return Promise.all([new Promise((resolve,reject)=>{
 		
 		jsonp({
-			url: 'https://view.inews.qq.com/g2/getOnsInfo',
-			params: {
-				name: 'disease_foreign',
-			},
+			// url: 'https://view.inews.qq.com/g2/getOnsInfo',
+			// params: {
+			// 	name: 'disease_foreign',
+			// },
+			url: 'http://127.0.0.1:8000/coivd_info',
 			success(res) {
 				let foreinData;
 				foreinData = JSON.parse(res.data);
