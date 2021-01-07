@@ -7,7 +7,7 @@
       margin-top: 3px;
     "
   >
-    <vue-datepicker-local v-model="time" style=""></vue-datepicker-local>
+    <vue-datepicker-local v-model="time"  style=""></vue-datepicker-local>
   </div>
 </template>
  
@@ -16,10 +16,8 @@ import VueDatepickerLocal from "vue-datepicker-local";
 import "commonfun/vueDatepikerLocal.js";
 import { getForeinData, getMapData } from "commonfun/charts.js";
 export default {
-  
   name: "chooseTime2",
   watch: {
-    
     time(oldTime, newTime) {
       let date = newTime.getTime();
       let params = { name: "disease_foreign", date: date };
@@ -27,6 +25,7 @@ export default {
       let params2 = { name: "disease_h5", date: date };
       getForeinData(params);
       getMapData(params1, params2);
+      this.$store.dispatch("setNewDate", date)
     },
   },
   components: {
@@ -54,10 +53,7 @@ export default {
       },
     };
   },
-  methods: {
-    
-    
-  },
+  methods: {},
 };
 </script> 
 

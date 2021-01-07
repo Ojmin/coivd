@@ -1,7 +1,7 @@
 <template>
 
 	<div id="app">
-		<VmHeader></VmHeader>
+		<VmHeader :key="flush"></VmHeader>
 		<div id="content">
 			<VmLeft class='left' 
 			:option1 = 'option1'
@@ -34,6 +34,7 @@
 		name: 'app',
 		data() {
 			return {
+				flush:0,
 				option1:{},
 				option2:{},
 				option3:{},
@@ -45,6 +46,10 @@
 			}
 		},
 		methods: {
+			forceFlush(){
+				 this.flush=this.$store.getters.getChangedDate;
+				 console.log(222,this.flush)
+			}
 		},
 		components: {
 			VmHeader,
