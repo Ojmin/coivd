@@ -14,10 +14,20 @@
 <script>
 import VueDatepickerLocal from "vue-datepicker-local";
 import "commonfun/vueDatepikerLocal.js";
+import { getForeinData, getMapData } from "commonfun/charts.js";
 
 export default {
-  name: "ChooseTime2",
-
+  name: "chooseTime2",
+  watch: {
+    time(oldTime, newTime) {
+      let date = newTime.getTime();
+      let params = { name: "disease_foreign", date: date };
+      let params1 = params;
+      let params2 = { name: "disease_h5", date: date };
+      getForeinData(params);
+      getMapData(params1, params2);
+    },
+  },
   components: {
     VueDatepickerLocal,
   },
