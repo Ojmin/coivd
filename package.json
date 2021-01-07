@@ -9,7 +9,10 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "px2rem-loader": "^0.1.9",
-    "vue": "^2.6.11"
+    "vee-validate": "^3.4.5",
+    "vue": "^2.6.11",
+    "vue-datepicker-local": "^1.0.19",
+    "vue-vanilla-datetime-picker": "^1.1.15"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
