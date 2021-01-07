@@ -3,10 +3,10 @@
     <div class="bg1"></div>
     <div class="bg2"></div>
     <div class="bg3"></div>
-	
+
     <div class="btn">
       <button @click="btnclick1" :class="{ click: ifclick1 }">累计确诊</button>
-		<div><ChooseTime2></ChooseTime2></div>
+      <div><ChooseTime2></ChooseTime2></div>
 
       <button @click="btnclick2" :class="{ click: ifclick2 }">现存确诊</button>
     </div>
@@ -24,7 +24,7 @@ import { getMapData, addChart } from "commonfun/charts.js";
 export default {
   name: "vmcentercontainer",
   components: {
-    ChooseTime2
+    ChooseTime2,
   },
   data() {
     return {
