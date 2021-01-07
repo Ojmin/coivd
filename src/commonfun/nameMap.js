@@ -216,4 +216,4 @@ var nameMap = {
     "Siachen Glacier": "锡亚琴冰川地区"
 };
 
-export{nameMap}
+export { nameMap }

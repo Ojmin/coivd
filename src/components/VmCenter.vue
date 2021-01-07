@@ -8,6 +8,7 @@
 <script>
 	import VmCenterTop from './common/VmCenterTop.vue'
 	import VmCenterContainer from 'components/common/VmCenterContainer.vue'
+	import ChooseTime2 from 'components/common/ChooseTime2.vue'
 	export default {
 		name:'vmcenter',
 		props:{
@@ -16,7 +17,8 @@
 		},
 		components:{	
 			VmCenterTop,
-			VmCenterContainer
+			VmCenterContainer,
+			ChooseTime2
 		},
 	}
 </script>

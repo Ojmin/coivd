@@ -15,10 +15,11 @@
 import VueDatepickerLocal from "vue-datepicker-local";
 import "commonfun/vueDatepikerLocal.js";
 import { getForeinData, getMapData } from "commonfun/charts.js";
-
 export default {
+  
   name: "chooseTime2",
   watch: {
+    
     time(oldTime, newTime) {
       let date = newTime.getTime();
       let params = { name: "disease_foreign", date: date };
@@ -54,11 +55,8 @@ export default {
     };
   },
   methods: {
-    //disable the weekend
-    disabledDate(time) {
-      var day = time.getDay();
-      return day === 0 || day === 6;
-    },
+    
+    
   },
 };
 </script> 
