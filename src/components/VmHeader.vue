@@ -11,8 +11,8 @@ import ZpTime from "./common/ZpTime.vue";
 
 export default {
   name: "vmheader",
-  data:{
-      getDate:''
+  data() {
+    return { stamp: new Date() };
   },
   watch: {
     watchDate(val) {
@@ -24,9 +24,6 @@ export default {
     },
   },
   computed: {
-    stamp() {
-      return this.$store.getters.getChangedDate;
-    },
     getDate: {
       get: function () {
         var stamp = this.stamp;
@@ -40,11 +37,11 @@ export default {
         return Y + M + D;
       },
       set: function (v) {
-        return v;
+        return this.stamp = v;
       },
     },
     watchDate() {
-      return this.stamp;
+      return this.$store.getters.getChangedDate;
     },
   },
   components: {
