@@ -18,8 +18,9 @@ import { getForeinData, getMapData } from "commonfun/charts.js";
 export default {
   name: "chooseTime2",
   watch: {
-    time(oldTime, newTime) {
-      let date = newTime.getTime();
+    time(newTime, oldTime) {
+      let date = newTime;
+      console.log(date,oldTime)
       let params = { name: "disease_foreign", date: date };
       let params1 = params;
       let params2 = { name: "disease_h5", date: date };

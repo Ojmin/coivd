@@ -16,17 +16,13 @@ export default {
   },
   watch: {
     watchDate(val) {
-      console.log(111, val);
       this.getDate = val;
       this.$forceUpdate;
-      console.log(111, this.getDate);
-      console.log(111, this.getDate);
     },
   },
   computed: {
     getDate: {
       get: function () {
-        var stamp = this.stamp;
         var date = new Date(this.stamp);
         var Y = date.getFullYear() + "-";
         var M =
@@ -47,11 +43,7 @@ export default {
   components: {
     ZpTime,
   },
-  // methods:{
-  //   reload() {
-  //           this.$forceUpdate()
-  //       }
-  // }
+  
 };
 </script>
 <style scoped>
