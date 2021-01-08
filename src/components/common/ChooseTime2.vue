@@ -19,8 +19,7 @@ export default {
   name: "chooseTime2",
   watch: {
     time(newTime, oldTime) {
-      let date = newTime;
-      console.log(date,oldTime)
+      let date =this.transDate( newTime);
       let params = { name: "disease_foreign", date: date };
       let params1 = params;
       let params2 = { name: "disease_h5", date: date };
@@ -54,7 +53,17 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    transDate: function (date) {
+        var Y = date.getFullYear() + "-";
+        var M =
+          (date.getMonth() + 1 < 10
+            ? "0" + (date.getMonth() + 1)
+            : date.getMonth() + 1) + "-";
+        var D = date.getDate() + " ";
+        return Y + M + D;
+      },
+  },
 };
 </script> 
 

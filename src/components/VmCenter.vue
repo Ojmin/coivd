@@ -1,31 +1,40 @@
 <template>
   <div id="vmcenter">
-	  <VmCenterTop :centerTop ='centerTop'></VmCenterTop>
-	  <VmCenterContainer :foreignData = 'foreignData'></VmCenterContainer>
+    <VmCenterTop :centerTop="centerTop"></VmCenterTop>
+    <VmCenterContainer :foreignData="foreignData"></VmCenterContainer>
   </div>
 </template>
 
 <script>
-	import VmCenterTop from './common/VmCenterTop.vue'
-	import VmCenterContainer from 'components/common/VmCenterContainer.vue'
-	import ChooseTime2 from 'components/common/ChooseTime2.vue'
-	export default {
-		name:'vmcenter',
-		props:{
-			centerTop:{},
-			foreignData:{}
-		},
-		components:{	
-			VmCenterTop,
-			VmCenterContainer,
-			ChooseTime2
-		},
-	}
+import VmCenterTop from "./common/VmCenterTop.vue";
+import VmCenterContainer from "components/common/VmCenterContainer.vue";
+export default {
+  name: "vmcenter",
+  props: {
+    centerTop: {},
+    foreignData: {},
+  },
+  components: {
+    VmCenterTop,
+    VmCenterContainer,
+    // ChooseTime2,
+  },
+  computed:{
+	  watchDate() {
+      return this.$store.getters.getChangedDate;
+    },
+  },
+  watch: {
+    watchDate(val) {
+      this.$forceUpdate;
+    },
+  },
+};
 </script>
 <style scoped>
-	#vmcenter{
-		/* height: 100px;
+#vmcenter {
+  /* height: 100px;
 		background-color: #000088; */
-		padding: 0 10px 15px;
-	}
+  padding: 0 10px 15px;
+}
 </style>

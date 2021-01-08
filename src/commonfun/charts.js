@@ -19,7 +19,7 @@ export function getForeinData(params = {
         jsonp({
             // url: 'https://view.inews.qq.com/g2/getOnsInfo',
             params: params,
-            url: 'http://127.0.0.1:8000/coivd_info',
+            url: 'http://8.135.59.30/coivd_info',
             success(res) {
                 let foreinData;
                 let chinaData;
@@ -56,7 +56,7 @@ export function getMapData(params1 = {
         jsonp({
             // url: 'https://view.inews.qq.com/g2/getOnsInfo',
             params: params1,
-            url: 'http://127.0.0.1:8000/coivd_info',
+            url: 'http://8.135.59.30/coivd_info',
             success(res) {
                 let foreinData;
                 foreinData = JSON.parse(res.data);
@@ -66,8 +66,8 @@ export function getMapData(params1 = {
         })
     }), new Promise((resolve, reject) => {
         jsonp({
-            // url: 'https://view.inews.qq.com/g2/getOnsInfo',
-            url: 'http://127.0.0.1:8000/coivd_info',
+            url: 'https://view.inews.qq.com/g2/getOnsInfo',
+            // url: 'http://8.135.59.30/coivd_info',
             params: params2,
             success(res1) { //注意不能和上面的重复
                 let chinaData;
