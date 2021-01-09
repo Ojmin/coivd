@@ -7,7 +7,7 @@
       margin-top: 3px;
     "
   >
-    <vue-datepicker-local v-model="time"  style=""></vue-datepicker-local>
+    <vue-datepicker-local v-model="time" style=""></vue-datepicker-local>
   </div>
 </template>
  
@@ -19,13 +19,13 @@ export default {
   name: "chooseTime2",
   watch: {
     time(newTime, oldTime) {
-      let date =this.transDate( newTime);
+      let date = newTime; //this.transDate( newTime);
       let params = { name: "disease_foreign", date: date };
       let params1 = params;
       let params2 = { name: "disease_h5", date: date };
-      getForeinData(params);
-      getMapData(params1, params2);
-      this.$store.dispatch("setNewDate", date)
+      // getForeinData(params);
+      // getMapData(params1, params2);
+      this.$store.dispatch("setNewDate", date);
     },
   },
   components: {
@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      time: new Date(),
+      time: this.$store.getters.getChangedDate,
       //   range: [new Date(), new Date()],
       emptyTime: "",
       emptyRange: [],
@@ -55,14 +55,14 @@ export default {
   },
   methods: {
     transDate: function (date) {
-        var Y = date.getFullYear() + "-";
-        var M =
-          (date.getMonth() + 1 < 10
-            ? "0" + (date.getMonth() + 1)
-            : date.getMonth() + 1) + "-";
-        var D = date.getDate() + " ";
-        return Y + M + D;
-      },
+      var Y = date.getFullYear() + "-";
+      var M =
+        (date.getMonth() + 1 < 10
+          ? "0" + (date.getMonth() + 1)
+          : date.getMonth() + 1) + "-";
+      var D = date.getDate() + " ";
+      return Y + M + D;
+    },
   },
 };
 </script> 

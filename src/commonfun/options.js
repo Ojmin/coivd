@@ -81,7 +81,10 @@ export function setOption2(foreignList) {
     let yAxis2 = [];
     let countryList = [0, 1, 2, 5, 6]
     for (let i of countryList) {
-        yAxis1.push(foreignList[i].name);
+        try { yAxis1.push(foreignList[i].name); } catch (e) {
+            continue
+        }
+
         let cureRate = ((foreignList[i].heal / foreignList[i].confirm) * 100).toFixed(1)
         rate.push(cureRate);
         yAxis2.push(foreignList[i].heal);
@@ -92,89 +95,89 @@ export function setOption2(foreignList) {
             top: "10%",
             left: "22%",
             bottom: "10%"
-                // containLabel: true
+            // containLabel: true
         },
         // 不显示x轴的相关信息
         xAxis: {
             show: false
         },
         yAxis: [{
-                type: "category",
-                inverse: true,
-                data: yAxis1,
-                // 不显示y轴的线
-                axisLine: {
-                    show: false
-                },
-                // 不显示刻度
-                axisTick: {
-                    show: false
-                },
-                // 把刻度标签里面的文字颜色设置为白色
-                axisLabel: {
-                    color: "#fff"
-                }
+            type: "category",
+            inverse: true,
+            data: yAxis1,
+            // 不显示y轴的线
+            axisLine: {
+                show: false
             },
-            {
-                data: yAxis2,
-                inverse: true,
-                // 不显示y轴的线
-                axisLine: {
-                    show: false
-                },
-                // 不显示刻度
-                axisTick: {
-                    show: false
-                },
-                // 把刻度标签里面的文字颜色设置为白色
-                show: false,
-                axisLabel: {
-                    color: "#fff"
-                }
+            // 不显示刻度
+            axisTick: {
+                show: false
+            },
+            // 把刻度标签里面的文字颜色设置为白色
+            axisLabel: {
+                color: "#fff"
             }
+        },
+        {
+            data: yAxis2,
+            inverse: true,
+            // 不显示y轴的线
+            axisLine: {
+                show: false
+            },
+            // 不显示刻度
+            axisTick: {
+                show: false
+            },
+            // 把刻度标签里面的文字颜色设置为白色
+            show: false,
+            axisLabel: {
+                color: "#fff"
+            }
+        }
         ],
         series: [{
-                name: "条",
-                type: "bar",
-                data: rate,
-                yAxisIndex: 0,
-                // 修改第一组柱子的圆角
-                itemStyle: {
-                    barBorderRadius: 20,
-                    // 此时的color 可以修改柱子的颜色
-                    color: function(params) {
-                        // params 传进来的是柱子对象
-                        // console.log(params);
-                        // dataIndex 是当前柱子的索引号
-                        return myColor[params.dataIndex];
-                    }
-                },
-                // 柱子之间的距离
-                barCategoryGap: 50,
-                //柱子的宽度
-                barWidth: 10,
-                // 显示柱子内的文字
-                label: {
-                    show: true,
-                    position: "inside",
-                    // {c} 会自动的解析为 数据  data里面的数据
-                    formatter: "        {c}%"
+            name: "条",
+            type: "bar",
+            data: rate,
+            yAxisIndex: 0,
+            // 修改第一组柱子的圆角
+            itemStyle: {
+                barBorderRadius: 20,
+                // 此时的color 可以修改柱子的颜色
+                color: function (params) {
+                    // params 传进来的是柱子对象
+                    // console.log(params);
+                    // dataIndex 是当前柱子的索引号
+                    return myColor[params.dataIndex];
                 }
             },
-            {
-                name: "框",
-                type: "bar",
-                barCategoryGap: 50,
-                barWidth: 15,
-                yAxisIndex: 1,
-                data: [100, 100, 100, 100, 100],
-                itemStyle: {
-                    color: "none",
-                    borderColor: "#00c1de",
-                    borderWidth: 3,
-                    barBorderRadius: 15
-                }
+            // 柱子之间的距离
+            barCategoryGap: 50,
+            //柱子的宽度
+            barWidth: 10,
+            // 显示柱子内的文字
+            label: {
+                show: true,
+                position: "inside",
+                // {c} 会自动的解析为 数据  data里面的数据
+                formatter: "        {c}%"
             }
+        },
+        {
+            name: "框",
+            type: "bar",
+            barCategoryGap: 50,
+            barWidth: 15,
+            yAxisIndex: 1,
+            data: [100, 100, 100, 100, 100],
+            itemStyle: {
+                color: "none",
+                borderColor: "#00c1de",
+                borderWidth: 3,
+                barBorderRadius: 15
+            }
+        }
         ]
     };
 
@@ -280,40 +283,40 @@ export function setOption3(continentStatis) {
             }
         },
         series: [{
-                name: "亚洲",
-                type: "line",
-                // true 可以让我们的折线显示带有弧度
-                smooth: true,
-                data: series['亚洲']
-            },
-            {
-                name: "北美洲",
-                type: "line",
-                // true 可以让我们的折线显示带有弧度
-                smooth: true,
-                data: series['北美洲']
-            },
-            {
-                name: "大洋洲",
-                type: "line",
-                // true 可以让我们的折线显示带有弧度
-                smooth: true,
-                data: series['大洋洲']
-            },
-            {
-                name: "欧洲",
-                type: "line",
-                // true 可以让我们的折线显示带有弧度
-                smooth: true,
-                data: series['欧洲']
-            },
-            {
-                name: "其他",
-                type: "line",
-                // true 可以让我们的折线显示带有弧度
-                smooth: true,
-                data: series['其他']
-            },
+            name: "亚洲",
+            type: "line",
+            // true 可以让我们的折线显示带有弧度
+            smooth: true,
+            data: series['亚洲']
+        },
+        {
+            name: "北美洲",
+            type: "line",
+            // true 可以让我们的折线显示带有弧度
+            smooth: true,
+            data: series['北美洲']
+        },
+        {
+            name: "大洋洲",
+            type: "line",
+            // true 可以让我们的折线显示带有弧度
+            smooth: true,
+            data: series['大洋洲']
+        },
+        {
+            name: "欧洲",
+            type: "line",
+            // true 可以让我们的折线显示带有弧度
+            smooth: true,
+            data: series['欧洲']
+        },
+        {
+            name: "其他",
+            type: "line",
+            // true 可以让我们的折线显示带有弧度
+            smooth: true,
+            data: series['其他']
+        },
         ]
     }
     return option
@@ -394,91 +397,91 @@ export function setOption4(globalDailyHistory) {
             }
         }],
         series: [{
-                name: "死亡人数",
-                type: "line",
-                smooth: true,
-                // 单独修改当前线条的样式
-                lineStyle: {
-                    color: "#0184d5",
-                    width: "2"
-                },
-                // 填充颜色设置
-                areaStyle: {
+            name: "死亡人数",
+            type: "line",
+            smooth: true,
+            // 单独修改当前线条的样式
+            lineStyle: {
+                color: "#0184d5",
+                width: "2"
+            },
+            // 填充颜色设置
+            areaStyle: {
+                color: new echarts.graphic.LinearGradient(
+                    0,
+                    0,
+                    0,
+                    1, [{
+                        offset: 0,
+                        color: "rgba(1, 132, 213, 0.4)" // 渐变色的起始颜色
+                    },
+                    {
+                        offset: 0.8,
+                        color: "rgba(1, 132, 213, 0.1)" // 渐变线的结束颜色
+                    }
+                ],
+                    false
+                ),
+                shadowColor: "rgba(0, 0, 0, 0.1)"
+            },
+            // 设置拐点
+            symbol: "circle",
+            // 拐点大小
+            symbolSize: 8,
+            // 开始不显示拐点， 鼠标经过显示
+            showSymbol: false,
+            // 设置拐点颜色以及边框
+            itemStyle: {
+                color: "#0184d5",
+                borderColor: "rgba(221, 220, 107, .1)",
+                borderWidth: 12
+            },
+            data: series1
+        },
+        {
+            name: "治愈人数",
+            type: "line",
+            smooth: true,
+            lineStyle: {
+                normal: {
+                    color: "#00d887",
+                    width: 2
+                }
+            },
+            areaStyle: {
+                normal: {
                     color: new echarts.graphic.LinearGradient(
                         0,
                         0,
                         0,
                         1, [{
-                                offset: 0,
-                                color: "rgba(1, 132, 213, 0.4)" // 渐变色的起始颜色
-                            },
-                            {
-                                offset: 0.8,
-                                color: "rgba(1, 132, 213, 0.1)" // 渐变线的结束颜色
-                            }
-                        ],
+                            offset: 0,
+                            color: "rgba(0, 216, 135, 0.4)"
+                        },
+                        {
+                            offset: 0.8,
+                            color: "rgba(0, 216, 135, 0.1)"
+                        }
+                    ],
                         false
                     ),
                     shadowColor: "rgba(0, 0, 0, 0.1)"
-                },
-                // 设置拐点
-                symbol: "circle",
-                // 拐点大小
-                symbolSize: 8,
-                // 开始不显示拐点， 鼠标经过显示
-                showSymbol: false,
-                // 设置拐点颜色以及边框
-                itemStyle: {
-                    color: "#0184d5",
-                    borderColor: "rgba(221, 220, 107, .1)",
-                    borderWidth: 12
-                },
-                data: series1
+                }
             },
-            {
-                name: "治愈人数",
-                type: "line",
-                smooth: true,
-                lineStyle: {
-                    normal: {
-                        color: "#00d887",
-                        width: 2
-                    }
-                },
-                areaStyle: {
-                    normal: {
-                        color: new echarts.graphic.LinearGradient(
-                            0,
-                            0,
-                            0,
-                            1, [{
-                                    offset: 0,
-                                    color: "rgba(0, 216, 135, 0.4)"
-                                },
-                                {
-                                    offset: 0.8,
-                                    color: "rgba(0, 216, 135, 0.1)"
-                                }
-                            ],
-                            false
-                        ),
-                        shadowColor: "rgba(0, 0, 0, 0.1)"
-                    }
-                },
-                // 设置拐点 小圆点
-                symbol: "circle",
-                // 拐点大小
-                symbolSize: 5,
-                // 设置拐点颜色以及边框
-                itemStyle: {
-                    color: "#00d887",
-                    borderColor: "rgba(221, 220, 107, .1)",
-                    borderWidth: 12
-                },
-                // 开始不显示拐点， 鼠标经过显示
-                showSymbol: false,
-                data: series2
-            }
+            // 设置拐点 小圆点
+            symbol: "circle",
+            // 拐点大小
+            symbolSize: 5,
+            // 设置拐点颜色以及边框
+            itemStyle: {
+                color: "#00d887",
+                borderColor: "rgba(221, 220, 107, .1)",
+                borderWidth: 12
+            },
+            // 开始不显示拐点， 鼠标经过显示
+            showSymbol: false,
+            data: series2
+        }
         ]
     };
     return option;
@@ -597,7 +600,7 @@ export function worldMapOption() {
             // 设置提示信息触发源
             trigger: 'item',
             // 设置提示信息格式
-            formatter: function(params) {
+            formatter: function (params) {
                 return params.name + " : " + (params.value ? params.value : 0);
             }
         },

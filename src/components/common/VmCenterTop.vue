@@ -25,6 +25,15 @@
 		name:'vmcentertop',
 		props:{
 			centerTop:{}
+		},
+		watch:{
+			'centerTop':{
+				handler(newVal){
+					this.centerTop=newVal
+				},
+				deep:true,
+				immediate:true
+			}
 		}
 	}
 </script>

@@ -16,6 +16,7 @@ export default {
   },
   watch: {
     watchDate(val) {
+      console.log(val)
       this.getDate = val;
       this.$forceUpdate;
     },
